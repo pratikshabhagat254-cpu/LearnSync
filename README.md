@@ -100,9 +100,7 @@ learnsync/
 - **Chrome Scripting API** — content script injection
 - **jsPDF** (CDN, loaded on demand) — PDF export
 
-No React, no Vue, no backend, no external APIs. Fully offline.
 
----
 
 ## Data Model
 
@@ -130,7 +128,3 @@ All notes are stored under the key `learnsync_notes` in `chrome.storage.local`.
 - No accounts, no servers, no telemetry, no analytics.
 
 ---
-
-## Resume Description
-
-> Built **LearnSync**, a Chrome Extension for timestamp-based video note-taking that enables learners to capture, search, organize, and revisit educational content through direct video-linked knowledge management. Leveraged Manifest V3, Chrome Storage API, content scripts, and modular frontend architecture to deliver a fully offline learning productivity tool.
