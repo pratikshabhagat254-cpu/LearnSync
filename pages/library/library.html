@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Library — LearnSync</title>
+  <link rel="stylesheet" href="../../assets/shared.css" />
+  <link rel="stylesheet" href="library.css" />
+</head>
+<body>
+<div class="page-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <span class="material-symbols-outlined fill-icon" style="font-size:20px">change_history</span>
+      </div>
+      <div><h1>LearnSync</h1><p>Precision Learning</p></div>
+    </div>
+    <p class="nav-section-title">Navigation</p>
+    <nav>
+      <a href="../dashboard/dashboard.html" class="nav-link"><span class="material-symbols-outlined">home</span> Dashboard</a>
+      <a href="library.html" class="nav-link active"><span class="material-symbols-outlined">video_library</span> My Library</a>
+      <a href="../search/search.html" class="nav-link"><span class="material-symbols-outlined">search</span> Search</a>
+      <a href="../settings/settings.html" class="nav-link"><span class="material-symbols-outlined">settings</span> Settings</a>
+    </nav>
+    <div style="margin-top:auto;padding-top:var(--space-md);border-top:1px solid var(--outline-variant);">
+      <a href="https://youtube.com" target="_blank" class="nav-link">
+        <span class="material-symbols-outlined">play_circle</span> Open YouTube
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="page-main">
+
+    <!-- Library view (all videos) -->
+    <div id="view-library">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">My Library</h1>
+          <p style="font:400 13px/1 var(--font);color:var(--on-surface-variant);margin-top:4px;" id="lib-count">Loading…</p>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <div class="lib-search-wrap">
+            <span class="material-symbols-outlined">search</span>
+            <input type="text" id="lib-filter" class="input-field" placeholder="Filter videos…" style="padding-left:36px;" />
+          </div>
+          <select id="lib-sort" class="input-field" style="width:auto;cursor:pointer;">
+            <option value="recent">Most Recent</option>
+            <option value="notes">Most Notes</option>
+            <option value="alpha">A → Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="lib-grid" class="lib-grid"></div>
+
+      <div id="lib-empty" class="lib-empty hidden">
+        <span class="material-symbols-outlined">video_library</span>
+        <h3>Your library is empty</h3>
+        <p>Start taking notes on YouTube to build your library.</p>
+        <a href="https://youtube.com" target="_blank" class="btn-primary" style="text-decoration:none;margin-top:8px;">Open YouTube</a>
+      </div>
+    </div>
+
+    <!-- Video Detail view -->
+    <div id="view-video" class="hidden">
+      <div class="page-header">
+        <button class="btn-ghost" id="btn-back">
+          <span class="material-symbols-outlined">arrow_back</span> Back
+        </button>
+        <div style="display:flex;gap:8px;">
+          <button class="btn-secondary" id="btn-export-video">
+            <span class="material-symbols-outlined">download</span> Export
+          </button>
+        </div>
+      </div>
+
+      <div class="video-detail-header card" id="video-detail-header"></div>
+      <div id="video-detail-notes" class="detail-notes"></div>
+
+      <!-- Export modal -->
+      <div id="export-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+          <h3>Export Notes</h3>
+          <p>Choose a format to export notes for this video.</p>
+          <div class="export-options">
+            <button class="export-btn" id="exp-txt"><span class="material-symbols-outlined">article</span> TXT</button>
+            <button class="export-btn" id="exp-md"><span class="material-symbols-outlined">code</span> Markdown</button>
+            <button class="export-btn" id="exp-pdf"><span class="material-symbols-outlined">picture_as_pdf</span> PDF</button>
+          </div>
+          <button class="btn-ghost" id="close-export-modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="toast" id="ls-toast"></div>
+
+<script src="../../storage/storage-manager.js"></script>
+<script src="../../utils/time.js"></script>
+<script src="../../utils/format.js"></script>
+<script src="../../exports/export-txt.js"></script>
+<script src="../../exports/export-md.js"></script>
+<script src="../../exports/export-pdf.js"></script>
+<script src="library.js"></script>
+</body>
+</html>

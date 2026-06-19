@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LearnSync</title>
+  <link rel="stylesheet" href="../assets/shared.css" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+<div id="app" class="popup-shell">
+
+  <!-- ── Header ── -->
+  <header class="popup-header">
+    <div class="header-brand">
+      <div class="brand-icon">
+        <span class="material-symbols-outlined fill-icon">change_history</span>
+      </div>
+      <div>
+        <h1 class="brand-name">LearnSync</h1>
+        <p class="brand-sub">Precision Learning</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-ghost icon-btn" id="btn-search" title="Search Notes">
+        <span class="material-symbols-outlined">search</span>
+      </button>
+      <button class="btn-ghost icon-btn" id="btn-settings" title="Settings">
+        <span class="material-symbols-outlined">settings</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Main Scrollable ── -->
+  <main class="popup-main" id="popup-main">
+
+    <!-- Not on YouTube state -->
+    <div id="state-no-video" class="empty-state hidden">
+      <div class="empty-icon">
+        <span class="material-symbols-outlined">smart_display</span>
+      </div>
+      <h2>No video detected</h2>
+      <p>Open a YouTube video to start capturing learning moments.</p>
+      <a href="https://youtube.com" target="_blank" class="btn-primary" style="text-decoration:none;margin-top:12px;">
+        Open YouTube
+      </a>
+    </div>
+
+    <!-- YouTube active state -->
+    <div id="state-video" class="hidden">
+
+      <!-- Current Video Card -->
+      <div class="video-card card" id="video-card">
+        <div class="video-thumb-wrap">
+          <img id="video-thumb" src="" alt="Video thumbnail" />
+          <div class="live-badge hidden" id="live-badge">LIVE</div>
+        </div>
+        <div class="video-info">
+          <h2 class="video-title" id="video-title">Loading…</h2>
+          <div class="video-meta">
+            <span class="timestamp-mono video-time" id="video-time">0:00</span>
+            <span class="video-progress-label" id="video-progress-pct">0% Complete</span>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Note Input Section -->
+      <section class="note-section">
+        <div class="section-title">
+          <span class="material-symbols-outlined">edit_note</span>
+          <span>New Learning Moment</span>
+        </div>
+        <div class="note-input-card" id="note-input-card">
+          <div class="note-input-top">
+            <div class="timestamp-badge active-ts timestamp-mono" id="capture-ts">0:00</div>
+            <textarea
+              id="note-input"
+              class="note-textarea"
+              placeholder="Write your note…"
+              rows="2"
+            ></textarea>
+          </div>
+          <div class="note-input-footer">
+            <button class="btn-primary" id="btn-save">
+              Save Note
+              <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Notes List -->
+      <section class="notes-section">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="material-symbols-outlined">format_list_bulleted</span>
+            <span>Recent Highlights</span>
+          </div>
+          <button class="btn-ghost small-link" id="btn-view-all">View All →</button>
+        </div>
+
+        <!-- Empty notes for this video -->
+        <div id="notes-empty" class="notes-empty hidden">
+          <span class="material-symbols-outlined">bookmark_border</span>
+          <p>No notes yet. Capture your first moment!</p>
+        </div>
+
+        <div id="notes-list" class="notes-list"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Bottom Nav ── -->
+  <nav class="popup-nav">
+    <button class="nav-item active" data-tab="notes" id="nav-notes">
+      <span class="material-symbols-outlined fill-icon">edit_note</span>
+      <span>Notes</span>
+    </button>
+    <button class="nav-item" data-tab="search" id="nav-search">
+      <span class="material-symbols-outlined">search</span>
+      <span>Search</span>
+    </button>
+    <button class="nav-item" data-tab="dashboard" id="nav-dashboard">
+      <span class="material-symbols-outlined">bar_chart</span>
+      <span>Stats</span>
+    </button>
+    <button class="nav-item" data-tab="library" id="nav-library">
+      <span class="material-symbols-outlined">video_library</span>
+      <span>Library</span>
+    </button>
+  </nav>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="ls-toast"></div>
+
+<!-- Scripts -->
+<script src="../storage/storage-manager.js"></script>
+<script src="../utils/time.js"></script>
+<script src="../utils/format.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

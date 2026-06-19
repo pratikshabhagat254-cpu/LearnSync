@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings — LearnSync</title>
+  <link rel="stylesheet" href="../../assets/shared.css" />
+  <link rel="stylesheet" href="settings.css" />
+</head>
+<body>
+<div class="page-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <span class="material-symbols-outlined fill-icon" style="font-size:20px">change_history</span>
+      </div>
+      <div><h1>LearnSync</h1><p>Precision Learning</p></div>
+    </div>
+    <p class="nav-section-title">Navigation</p>
+    <nav>
+      <a href="../dashboard/dashboard.html" class="nav-link"><span class="material-symbols-outlined">home</span> Dashboard</a>
+      <a href="../library/library.html" class="nav-link"><span class="material-symbols-outlined">video_library</span> My Library</a>
+      <a href="../search/search.html" class="nav-link"><span class="material-symbols-outlined">search</span> Search</a>
+      <a href="settings.html" class="nav-link active"><span class="material-symbols-outlined">settings</span> Settings</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="page-main">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Settings</h1>
+        <p style="font:400 13px/1 var(--font);color:var(--on-surface-variant);margin-top:4px;">Customize your LearnSync experience</p>
+      </div>
+    </div>
+
+    <div class="settings-layout">
+
+      <!-- Appearance -->
+      <div class="settings-section card">
+        <div class="settings-section-header">
+          <span class="material-symbols-outlined">palette</span>
+          <div>
+            <h2>Appearance</h2>
+            <p>Choose your preferred color theme.</p>
+          </div>
+        </div>
+        <div class="theme-options">
+          <label class="theme-option" data-value="light">
+            <input type="radio" name="theme" value="light" />
+            <div class="theme-preview theme-light">
+              <div class="preview-bar"></div>
+              <div class="preview-content"></div>
+            </div>
+            <span>Light</span>
+          </label>
+          <label class="theme-option" data-value="dark">
+            <input type="radio" name="theme" value="dark" />
+            <div class="theme-preview theme-dark">
+              <div class="preview-bar dark"></div>
+              <div class="preview-content dark"></div>
+            </div>
+            <span>Dark</span>
+          </label>
+          <label class="theme-option" data-value="system">
+            <input type="radio" name="theme" value="system" />
+            <div class="theme-preview theme-system">
+              <div class="preview-half-light"></div>
+              <div class="preview-half-dark"></div>
+            </div>
+            <span>System</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Data & Backup -->
+      <div class="settings-section card">
+        <div class="settings-section-header">
+          <span class="material-symbols-outlined">database</span>
+          <div>
+            <h2>Data & Backup</h2>
+            <p>Export or restore your notes.</p>
+          </div>
+        </div>
+        <div class="settings-actions">
+          <div class="settings-row">
+            <div>
+              <div class="settings-row-title">Backup Notes</div>
+              <div class="settings-row-sub">Download all notes as a JSON file.</div>
+            </div>
+            <button class="btn-secondary" id="btn-backup">
+              <span class="material-symbols-outlined">download</span> Backup
+            </button>
+          </div>
+          <div class="settings-divider"></div>
+          <div class="settings-row">
+            <div>
+              <div class="settings-row-title">Restore Notes</div>
+              <div class="settings-row-sub">Import from a previous backup JSON file.</div>
+            </div>
+            <label class="btn-secondary" style="cursor:pointer;">
+              <span class="material-symbols-outlined">upload</span> Restore
+              <input type="file" id="restore-file" accept=".json" class="hidden" />
+            </label>
+          </div>
+          <div class="settings-divider"></div>
+          <div class="settings-row">
+            <div>
+              <div class="settings-row-title">Export All Notes</div>
+              <div class="settings-row-sub">Export all your notes to a text file.</div>
+            </div>
+            <button class="btn-secondary" id="btn-export-all">
+              <span class="material-symbols-outlined">text_snippet</span> Export TXT
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Danger Zone -->
+      <div class="settings-section card danger-card">
+        <div class="settings-section-header">
+          <span class="material-symbols-outlined" style="color:var(--error)">warning</span>
+          <div>
+            <h2>Danger Zone</h2>
+            <p>Permanent actions. Use with care.</p>
+          </div>
+        </div>
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-title">Clear All Data</div>
+            <div class="settings-row-sub">Permanently delete all notes and settings.</div>
+          </div>
+          <button class="btn-danger" id="btn-clear">
+            <span class="material-symbols-outlined">delete_forever</span> Clear All
+          </button>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="settings-section card">
+        <div class="settings-section-header">
+          <span class="material-symbols-outlined">info</span>
+          <div>
+            <h2>About LearnSync</h2>
+            <p>Version 1.0.0 · Built for learners</p>
+          </div>
+        </div>
+        <div id="about-stats" class="about-stats"></div>
+      </div>
+
+    </div>
+
+    <!-- Confirm Modal -->
+    <div id="confirm-modal" class="modal-overlay hidden">
+      <div class="modal-card">
+        <span class="material-symbols-outlined" style="color:var(--error);font-size:32px;margin-bottom:8px;">warning</span>
+        <h3>Clear All Data?</h3>
+        <p>This will permanently delete all your notes. This cannot be undone.</p>
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:var(--space-md);">
+          <button class="btn-ghost" id="confirm-cancel">Cancel</button>
+          <button class="btn-danger" id="confirm-delete">Yes, Delete All</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="ls-toast"></div>
+
+<script src="../../storage/storage-manager.js"></script>
+<script src="../../utils/time.js"></script>
+<script src="../../utils/format.js"></script>
+<script src="../../exports/export-txt.js"></script>
+<script src="settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — LearnSync</title>
+  <link rel="stylesheet" href="../../assets/shared.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+<div class="page-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <span class="material-symbols-outlined fill-icon" style="font-size:20px">change_history</span>
+      </div>
+      <div>
+        <h1>LearnSync</h1>
+        <p>Precision Learning</p>
+      </div>
+    </div>
+
+    <p class="nav-section-title">Navigation</p>
+    <nav>
+      <a href="dashboard.html" class="nav-link active">
+        <span class="material-symbols-outlined">home</span> Dashboard
+      </a>
+      <a href="../library/library.html" class="nav-link">
+        <span class="material-symbols-outlined">video_library</span> My Library
+      </a>
+      <a href="../search/search.html" class="nav-link">
+        <span class="material-symbols-outlined">search</span> Search
+      </a>
+      <a href="../settings/settings.html" class="nav-link">
+        <span class="material-symbols-outlined">settings</span> Settings
+      </a>
+    </nav>
+
+    <div style="margin-top:auto;padding-top:var(--space-md);border-top:1px solid var(--outline-variant);">
+      <a href="https://youtube.com" target="_blank" class="nav-link">
+        <span class="material-symbols-outlined">play_circle</span> Open YouTube
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="page-main">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Dashboard</h1>
+        <p style="font:400 13px/1 var(--font);color:var(--on-surface-variant);margin-top:4px;">Your learning at a glance</p>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <a href="../search/search.html" class="btn-ghost" style="text-decoration:none;">
+          <span class="material-symbols-outlined">search</span> Search
+        </a>
+        <a href="../settings/settings.html" class="btn-ghost" style="text-decoration:none;">
+          <span class="material-symbols-outlined">settings</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid" id="stats-grid">
+      <!-- Cards injected by JS -->
+    </div>
+
+    <!-- Weekly Activity -->
+    <section class="section-block">
+      <div class="section-head">
+        <span class="material-symbols-outlined">calendar_today</span>
+        <h2>Weekly Activity</h2>
+      </div>
+      <div class="card activity-card">
+        <div class="activity-chart" id="activity-chart">
+          <!-- bars injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Videos -->
+    <section class="section-block">
+      <div class="section-head">
+        <span class="material-symbols-outlined">history</span>
+        <h2>Recent Videos</h2>
+        <a href="../library/library.html" class="btn-ghost small-text" style="text-decoration:none;margin-left:auto;">View All →</a>
+      </div>
+      <div id="recent-videos" class="recent-videos">
+        <!-- injected by JS -->
+      </div>
+      <div id="empty-dash" class="dash-empty hidden">
+        <span class="material-symbols-outlined">school</span>
+        <h3>Start Learning!</h3>
+        <p>Open a YouTube video and capture your first note.</p>
+        <a href="https://youtube.com" target="_blank" class="btn-primary" style="text-decoration:none;margin-top:8px;">Open YouTube</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="toast" id="ls-toast"></div>
+
+<script src="../../storage/storage-manager.js"></script>
+<script src="../../utils/time.js"></script>
+<script src="../../utils/format.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

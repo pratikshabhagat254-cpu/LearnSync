@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search — LearnSync</title>
+  <link rel="stylesheet" href="../../assets/shared.css" />
+  <link rel="stylesheet" href="search.css" />
+</head>
+<body>
+<div class="page-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <span class="material-symbols-outlined fill-icon" style="font-size:20px">change_history</span>
+      </div>
+      <div><h1>LearnSync</h1><p>Precision Learning</p></div>
+    </div>
+    <p class="nav-section-title">Navigation</p>
+    <nav>
+      <a href="../dashboard/dashboard.html" class="nav-link"><span class="material-symbols-outlined">home</span> Dashboard</a>
+      <a href="../library/library.html" class="nav-link"><span class="material-symbols-outlined">video_library</span> My Library</a>
+      <a href="search.html" class="nav-link active"><span class="material-symbols-outlined">search</span> Search</a>
+      <a href="../settings/settings.html" class="nav-link"><span class="material-symbols-outlined">settings</span> Settings</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="page-main">
+
+    <!-- Search hero -->
+    <section class="search-hero">
+      <h1 class="page-title" style="text-align:center;margin-bottom:var(--space-md);">Search Notes</h1>
+      <div class="search-bar-wrap">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="Search across all notes and videos…"
+          autofocus
+          autocomplete="off"
+        />
+        <button class="btn-ghost search-clear hidden" id="search-clear" title="Clear">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Results header -->
+    <div class="results-header" id="results-header" style="display:none;">
+      <span id="result-count" class="result-count"></span>
+      <span id="result-query" class="result-query"></span>
+    </div>
+
+    <!-- Results / Initial state -->
+    <div id="search-idle" class="search-idle">
+      <span class="material-symbols-outlined">manage_search</span>
+      <p>Start typing to search your notes and video titles.</p>
+    </div>
+
+    <div id="search-empty" class="search-idle hidden">
+      <span class="material-symbols-outlined">search_off</span>
+      <h3>No results found</h3>
+      <p>Try different keywords.</p>
+    </div>
+
+    <div id="results-list" class="results-list"></div>
+
+  </main>
+</div>
+
+<div class="toast" id="ls-toast"></div>
+
+<script src="../../storage/storage-manager.js"></script>
+<script src="../../utils/time.js"></script>
+<script src="../../utils/format.js"></script>
+<script src="search.js"></script>
+</body>
+</html>
